@@ -37,6 +37,7 @@
  */
 
 using System;
+using System.Configuration;
 using System.Data.SqlClient;
 
 namespace Lesson_1_connection
@@ -82,7 +83,7 @@ namespace Lesson_1_connection
         static void Main(string[] args)
         {
             Program program = new Program();
-            // I
+            // Ia
             // a
             //string connect = "Server=(localdb)\\MSSQLLocalDB;Database=BV425_CompanyDB;User Id=user1;Password=sa;\r\n";
             //SqlConnection conn = new SqlConnection(connect);
@@ -92,72 +93,97 @@ namespace Lesson_1_connection
             //SqlConnection conn = new SqlConnection("Server=(localdb)\\MSSQLLocalDB;Database=BV425_CompanyDB;User Id=user1;Password=sa;\r\n");
 
             // b
-            string connect = "Server=(localdb)\\MSSQLLocalDB;Database=BV425_CompanyDB;User Id=user1;Password=sa;\r\n";
-            SqlConnection conn = new SqlConnection(connect);
+            //string connect = "Server=(localdb)\\MSSQLLocalDB;Database=BV425_CompanyDB;User Id=user1;Password=sa;\r\n";
+            //SqlConnection conn = new SqlConnection(connect);
             
-            conn.Open();
 
-            // Код работы с БД
+            // Ib
+            string constr = ConfigurationManager.ConnectionStrings["Company_db"].ConnectionString;
+            using (SqlConnection conn = new SqlConnection(constr))
             {
-                Console.WriteLine("Отображение таблицы (SELECT)\n");
+                conn.Open();
 
-                string sqlcommand = "SELECT * FROM [BV425_CompanyDB].[dbo].[Employee]";
-                SqlCommand cmd = new SqlCommand(sqlcommand, conn);
-                SqlDataReader dr = cmd.ExecuteReader();
-
-                while (dr.Read()) 
+                // Код работы с БД
                 {
-                    var f0 = dr[0];
-                    var f2 = dr[2];
-                    var f5 = dr[5];
+                    Console.WriteLine("Отображение таблицы (SELECT)\n");
 
-                    Console.WriteLine($"{f0,4}{f2,15}{f5,10}");
-                }
-                dr.Close();
-                Console.WriteLine("\n===================================================================================================\n");
+                    string sqlcommand = "SELECT * FROM [BV425_CompanyDB].[dbo].[Employee]";
+                    SqlCommand cmd = new SqlCommand(sqlcommand, conn);
+                    SqlDataReader dr = cmd.ExecuteReader();
 
-                Console.WriteLine("Сортировка (ORDER BY)\n");
+                    while (dr.Read())
+                    {
+                        //var f0 = dr["EmployeeID"];
+                        //var f2 = dr["LastName"];
+                        //var f5 = dr["Salary"];
 
-                sqlcommand = @"
+                        Console.WriteLine($"{dr["EmployeeID"],4}{dr["LastName"],15}{dr["Salary"],10}");
+                    }
+                    dr.Close();
+                    Console.WriteLine("\n===================================================================================================\n");
+
+                    //2 ExecuteScalar()
+                    string sqlcom2 = "select sum(Salary) as SalaryTotal from Employee";
+                    SqlCommand cmd2 = new SqlCommand(sqlcom2, conn);
+                    object res = cmd2.ExecuteScalar();
+                    Console.WriteLine($"Salary total = {res}");
+                    Console.WriteLine("\n===================================================================================================\n");
+
+                    //3 ExecuteNonQuery()
+                    string sqlcom3 = "insert into Position (PositionName) values('Director')";
+                    SqlCommand cmd3 = new SqlCommand(sqlcom3, conn);
+                    int res2 = cmd3.ExecuteNonQuery();
+                    if (res2 == 1)
+                    {
+                        Console.WriteLine($"OK {res}");
+                    }
+                    else
+                    {
+                        Console.WriteLine(res);
+                    }
+                    Console.WriteLine("\n===================================================================================================\n");
+                    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    Console.WriteLine("Сортировка (ORDER BY)\n");
+
+                    sqlcommand = @"
                                 SELECT * FROM [BV425_CompanyDB].[dbo].[Employee]
                                 ORDER BY Salary DESC
                                 ";
-                program.query(sqlcommand, conn);
+                    program.query(sqlcommand, conn);
 
-                Console.WriteLine("Группировка и агрегационные фукнции (GROUP BY, COUNT)\n");
+                    Console.WriteLine("Группировка и агрегационные фукнции (GROUP BY, COUNT)\n");
 
-                sqlcommand = @"
+                    sqlcommand = @"
                                 SELECT FirstName, COUNT(*) AS Count FROM [BV425_CompanyDB].[dbo].[Employee]
                                 GROUP BY FirstName
                                 ";
-                program.query(sqlcommand, conn);
+                    program.query(sqlcommand, conn);
 
-                Console.WriteLine("Условие с ограничением (WHERE >, <, =)\n");
+                    Console.WriteLine("Условие с ограничением (WHERE >, <, =)\n");
 
-                sqlcommand = @"
+                    sqlcommand = @"
                                 SELECT * FROM [BV425_CompanyDB].[dbo].[Employee]
                                 WHERE Salary > 1500
                                 ";
-                program.query(sqlcommand, conn);
+                    program.query(sqlcommand, conn);
 
-                Console.WriteLine("Условие с совпадением по значению (WHERE LIKE)\n");
+                    Console.WriteLine("Условие с совпадением по значению (WHERE LIKE)\n");
 
-                sqlcommand = @"
+                    sqlcommand = @"
                                 SELECT * FROM [BV425_CompanyDB].[dbo].[Employee]
                                 WHERE FirstName LIKE '%va%'
                                 ";
-                program.query(sqlcommand, conn);
+                    program.query(sqlcommand, conn);
 
-                Console.WriteLine("Присоединение одной таблицы к другой (JOIN)\n");
+                    Console.WriteLine("Присоединение одной таблицы к другой (JOIN)\n");
 
-                sqlcommand = @"
+                    sqlcommand = @"
                                 SELECT Customers.Id, Customers.FirstName, Pictures.Id FROM [BV425_CompanyDB].[dbo].[Pictures]
                                 RIGHT JOIN Customers ON Pictures.Customer_ID = Customers.id
                                 ";
-                program.query(sqlcommand, conn);
+                    program.query(sqlcommand, conn);
+                }
             }
-
-            conn.Close();
         }
     }
 }

@@ -38,6 +38,42 @@ namespace Lesson_2_st_pr
                 cust_id.Direction = ParameterDirection.Output; //Output параметр
                 cmd2.ExecuteNonQuery();
                 Console.WriteLine((int)cust_id.Value);
+
+                // stp_EmployeeByID
+                string command = "[dbo].[stp_EmployeeByID]";
+                SqlCommand cmd3 = new SqlCommand(command, conn);
+                cmd3.CommandType = System.Data.CommandType.StoredProcedure;
+
+                // 1
+                //SqlParameter empl_id = cmd3.Parameters.Add("@employeeID", System.Data.SqlDbType.Int);
+                //empl_id.Value = 4;
+
+                // 2
+                cmd3.Parameters.AddWithValue("@employeeID", 4);
+                SqlDataReader dr3 = cmd3.ExecuteReader();
+                while (dr3.Read()) 
+                {
+                    var f0 = dr3[0];
+                    var f2 = dr3[2];
+                    var f5 = dr3[5];
+                    Console.WriteLine($"{f0,-4}{f2,15}{f5,10}");
+                }
+                dr3.Close();
+
+                // delete
+                string command4 = "[dbo].[stp.CustomerDelete]";
+                SqlCommand cmd4 = new SqlCommand(command4, conn);
+                cmd4.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd4.Parameters.AddWithValue("@customerID", 4);
+                int rowsAffected = cmd4.ExecuteNonQuery();
+                if (rowsAffected > 0)
+                {
+                    Console.WriteLine("Объект удален");
+                }
+                else 
+                {
+                    Console.WriteLine("Ошибка при удалении");
+                }
             }
         }
     }

@@ -1,6 +1,7 @@
 ﻿using DZ2_19_08_2025.DataLayer;
 using DZ2_19_08_2025.Models;
 using System;
+using System.Collections.Generic;
 
 namespace DZ2_19_08_2025
 {
@@ -52,6 +53,13 @@ namespace DZ2_19_08_2025
             }
             else Console.WriteLine("Ошибка при обновлении пользователя!");
             DL.User.Delete(new_user.Id);
+
+            Console.WriteLine("Список пользователей:");
+            List<UserModel> allUsers = DL.User.All();
+            foreach (UserModel userTemp in allUsers)
+            {
+                Console.WriteLine(userTemp.ToString());
+            }
         }
     }
 }

@@ -33,7 +33,7 @@ namespace Lesson_2_st_pr
                 cmd2.CommandType = System.Data.CommandType.StoredProcedure;
                 cmd2.Parameters.AddWithValue("@FirstName", "Ella");
                 cmd2.Parameters.AddWithValue("@LastName", "Chornogor");
-                cmd2.Parameters.AddWithValue("@DateOfBirth", DateTime.Now.ToShortDateString());
+                cmd2.Parameters.AddWithValue("@DateOfBirth", DateTime.Today); //ToShortDateString не всегда работает
                 SqlParameter cust_id = cmd2.Parameters.Add("@CustomerID", System.Data.SqlDbType.Int);
                 cust_id.Direction = ParameterDirection.Output; //Output параметр
                 cmd2.ExecuteNonQuery();

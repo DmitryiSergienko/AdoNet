@@ -21,6 +21,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson_5_1_graphics", "Less
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DZ2_19_08_2025", "DZ2_19_08_2025\DZ2_19_08_2025.csproj", "{E77AC4F8-D313-49DC-8C3D-A326FB499398}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson_6_form_DGV", "Lesson_6_form_DGV\Lesson_6_form_DGV.csproj", "{200BB4B9-2C72-4AAF-A635-ACBCF7730440}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson_6_LINQ", "Lesson_6_LINQ\Lesson_6_LINQ.csproj", "{988ECDEE-A688-46D7-8FB0-AC0DEB0B0922}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +67,14 @@ Global
 		{E77AC4F8-D313-49DC-8C3D-A326FB499398}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E77AC4F8-D313-49DC-8C3D-A326FB499398}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E77AC4F8-D313-49DC-8C3D-A326FB499398}.Release|Any CPU.Build.0 = Release|Any CPU
+		{200BB4B9-2C72-4AAF-A635-ACBCF7730440}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{200BB4B9-2C72-4AAF-A635-ACBCF7730440}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{200BB4B9-2C72-4AAF-A635-ACBCF7730440}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{200BB4B9-2C72-4AAF-A635-ACBCF7730440}.Release|Any CPU.Build.0 = Release|Any CPU
+		{988ECDEE-A688-46D7-8FB0-AC0DEB0B0922}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{988ECDEE-A688-46D7-8FB0-AC0DEB0B0922}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{988ECDEE-A688-46D7-8FB0-AC0DEB0B0922}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{988ECDEE-A688-46D7-8FB0-AC0DEB0B0922}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

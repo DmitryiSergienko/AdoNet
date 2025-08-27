@@ -13,39 +13,42 @@ namespace Lesson_6_LINQ
         // Lint to XML
         static void Main(string[] args)
         {
+            Console.WriteLine("Все студенты:");
             List<Student> students = new List<Student>();
-            Create_List_Student(students);
+            LINQ.Create_List_Student(students);
             foreach (Student student in students)
             {
                 Console.WriteLine(student);
             }
             Console.WriteLine("====================================");
 
-            Find_linq_student(students);
-        }
+            Console.WriteLine("\nПоиск студентов с определенным условием:");
+            LINQ.Find_linq_student(students);
+            Console.WriteLine("====================================");
 
-        public static void Create_List_Student(List<Student> students)
-        {
-            Random rnd = new Random();
-            string[] city = { "c2", "c4", "c5", "c10", "c1", "c123", "c45" };
+            Console.WriteLine("\nСредний возраст студентов:");
+            LINQ.Avg_age_linq(students);
+            Console.WriteLine("====================================");
 
-            for (int i = 0; i < 10; i++)
-            {
-                Thread.Sleep(200);
-                students.Add(new Student { FN = "N" + i, LN = "LN" + i, City = city[rnd.Next(0, city.Length - 1)], Age = rnd.Next(16, 20) });
-            }
-        }
-        public static void Find_linq_student(List<Student> students)
-        {
-            var res = from s in students
-                      where s.Age >= 18
-                      orderby s.Age
-                      select new { s.LN, s.Age };
+            Console.WriteLine("\nМинимальный возраст студентов:");
+            LINQ.Min_age_linq(students);
+            Console.WriteLine("====================================");
 
-            foreach (var r in res)
-            {
-                Console.WriteLine(r);
-            }
+            Console.WriteLine("\nМинимальный возраст студентов:");
+            LINQ.Min_age_linq_1(students);
+            Console.WriteLine("====================================");
+
+            Console.WriteLine("\nСтуденты больше минимального возраста:");
+            LINQ.Min_age_linq_2(students);
+            Console.WriteLine("====================================");
+
+            Console.WriteLine("\nПоказать цвета у которых название больше 3 символов и отсортировать:");
+            LINQ.Show_Color_More_3_L_1();
+            Console.WriteLine("====================================");
+
+            Console.WriteLine("\nПоказать цвета у которых название больше 3 символов, убрать дубли и отсортировать:");
+            LINQ.Show_Color_More_3_L_2();
+            Console.WriteLine("====================================");
         }
     }
 }

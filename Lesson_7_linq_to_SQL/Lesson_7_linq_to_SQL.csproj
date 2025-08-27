@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{988ECDEE-A688-46D7-8FB0-AC0DEB0B0922}</ProjectGuid>
+    <ProjectGuid>{8AF12C87-C27E-42D9-8D1D-6E841013AAA6}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Lesson_6_LINQ</RootNamespace>
-    <AssemblyName>Lesson_6_LINQ</AssemblyName>
+    <RootNamespace>Lesson_7_linq_to_SQL</RootNamespace>
+    <AssemblyName>Lesson_7_linq_to_SQL</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -45,13 +45,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LINQ.cs" />
+    <Compile Include="Entity\Customer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Student.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

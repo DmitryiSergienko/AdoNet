@@ -27,6 +27,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson_6_LINQ", "Lesson_6_L
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DZ_CommandBuilder_19_08_2025", "DZ_CommandBuilder_19_08_2025\DZ_CommandBuilder_19_08_2025.csproj", "{2ABE648B-5AF6-4A2A-894D-81A3F311328D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson_7_Linq_to_XML", "Lesson_7_Linq_to_XML\Lesson_7_Linq_to_XML.csproj", "{7EED028F-934D-4F5A-A18A-BFA7E0139BD2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson_7_linq_to_SQL", "Lesson_7_linq_to_SQL\Lesson_7_linq_to_SQL.csproj", "{8AF12C87-C27E-42D9-8D1D-6E841013AAA6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +85,14 @@ Global
 		{2ABE648B-5AF6-4A2A-894D-81A3F311328D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2ABE648B-5AF6-4A2A-894D-81A3F311328D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2ABE648B-5AF6-4A2A-894D-81A3F311328D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EED028F-934D-4F5A-A18A-BFA7E0139BD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EED028F-934D-4F5A-A18A-BFA7E0139BD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EED028F-934D-4F5A-A18A-BFA7E0139BD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EED028F-934D-4F5A-A18A-BFA7E0139BD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AF12C87-C27E-42D9-8D1D-6E841013AAA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AF12C87-C27E-42D9-8D1D-6E841013AAA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AF12C87-C27E-42D9-8D1D-6E841013AAA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AF12C87-C27E-42D9-8D1D-6E841013AAA6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

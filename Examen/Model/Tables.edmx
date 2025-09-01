@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище TZ_21_07_2025Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="100" />
+          <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="surname" Type="nvarchar" MaxLength="100" />
+          <Property Name="patronymic" Type="nvarchar" MaxLength="100" />
+          <Property Name="mail" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="phone_number" Type="nvarchar" MaxLength="20" />
+          <Property Name="registration_date" Type="datetime" />
+        </EntityType>
+        <Function Name="add_user" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="login" Type="nvarchar" Mode="In" />
+          <Parameter Name="password" Type="nvarchar" Mode="In" />
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
+          <Parameter Name="surname" Type="nvarchar" Mode="In" />
+          <Parameter Name="patronymic" Type="nvarchar" Mode="In" />
+          <Parameter Name="mail" Type="nvarchar" Mode="In" />
+          <Parameter Name="phone_number" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="add_user_return_id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="login" Type="nvarchar" Mode="In" />
+          <Parameter Name="password" Type="nvarchar" Mode="In" />
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
+          <Parameter Name="surname" Type="nvarchar" Mode="In" />
+          <Parameter Name="patronymic" Type="nvarchar" Mode="In" />
+          <Parameter Name="mail" Type="nvarchar" Mode="In" />
+          <Parameter Name="phone_number" Type="nvarchar" Mode="In" />
+          <Parameter Name="UserID" Type="int" Mode="InOut" />
+        </Function>
+        <EntityContainer Name="Хранилище TZ_21_07_2025ModelContainer">
+          <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TZ_21_07_2025Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="surname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="patronymic" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="mail" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="phone_number" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="registration_date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="TZ_21_07_2025Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="users" EntityType="Self.users" />
+          <FunctionImport Name="add_user">
+            <Parameter Name="login" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="surname" Mode="In" Type="String" />
+            <Parameter Name="patronymic" Mode="In" Type="String" />
+            <Parameter Name="mail" Mode="In" Type="String" />
+            <Parameter Name="phone_number" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="add_user_return_id">
+            <Parameter Name="login" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="surname" Mode="In" Type="String" />
+            <Parameter Name="patronymic" Mode="In" Type="String" />
+            <Parameter Name="mail" Mode="In" Type="String" />
+            <Parameter Name="phone_number" Mode="In" Type="String" />
+            <Parameter Name="UserID" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище TZ_21_07_2025ModelContainer" CdmEntityContainer="TZ_21_07_2025Entities">
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="TZ_21_07_2025Model.users">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="patronymic" ColumnName="patronymic" />
+                <ScalarProperty Name="mail" ColumnName="mail" />
+                <ScalarProperty Name="phone_number" ColumnName="phone_number" />
+                <ScalarProperty Name="registration_date" ColumnName="registration_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="add_user" FunctionName="Хранилище TZ_21_07_2025Model.add_user" />
+          <FunctionImportMapping FunctionImportName="add_user_return_id" FunctionName="Хранилище TZ_21_07_2025Model.add_user_return_id" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

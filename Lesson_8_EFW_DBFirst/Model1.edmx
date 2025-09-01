@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище BV425_CompanyDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DateOfBirth" Type="date" />
+          <Property Name="Picture" Type="varbinary(max)" />
+        </EntityType>
+        <Function Name="stp_CustomerAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FirstName" Type="nvarchar" Mode="In" />
+          <Parameter Name="LastName" Type="nvarchar" Mode="In" />
+          <Parameter Name="DateOfBirth" Type="datetime" Mode="In" />
+          <Parameter Name="CustomerID" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="stp_CustomerAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="stp_CustomerByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="customerID" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="Хранилище BV425_CompanyDBModelContainer">
+          <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BV425_CompanyDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
+          <Property Name="Picture" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityContainer Name="BV425_CompanyDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Customers" EntityType="Self.Customers" />
+          <FunctionImport Name="stp_CustomerAll" ReturnType="Collection(BV425_CompanyDBModel.stp_CustomerAll_Result)" />
+          <FunctionImport Name="stp_CustomerByID" ReturnType="Collection(BV425_CompanyDBModel.stp_CustomerByID_Result)">
+          <Parameter Name="customerID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="stp_CustomerAdd">
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="DateOfBirth" Mode="In" Type="DateTime" />
+            <Parameter Name="CustomerID" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="stp_CustomerAll_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="FirstName" Nullable="false" />
+          <Property Type="String" Name="LastName" Nullable="false" />
+          <Property Type="DateTime" Name="DateOfBirth" Nullable="true" />
+          <Property Type="Binary" Name="Picture" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="stp_CustomerByID_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="FirstName" Nullable="false" />
+          <Property Type="String" Name="LastName" Nullable="false" />
+          <Property Type="DateTime" Name="DateOfBirth" Nullable="true" />
+          <Property Type="Binary" Name="Picture" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище BV425_CompanyDBModelContainer" CdmEntityContainer="BV425_CompanyDBEntities">
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="BV425_CompanyDBModel.Customers">
+              <MappingFragment StoreEntitySet="Customers">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="stp_CustomerAll" FunctionName="Хранилище BV425_CompanyDBModel.stp_CustomerAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BV425_CompanyDBModel.stp_CustomerAll_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="stp_CustomerByID" FunctionName="Хранилище BV425_CompanyDBModel.stp_CustomerByID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BV425_CompanyDBModel.stp_CustomerByID_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="stp_CustomerAdd" FunctionName="Хранилище BV425_CompanyDBModel.stp_CustomerAdd" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -15,6 +15,13 @@
             <Setter Property="BorderBrush" Value="Black" />
         </Style>
 
+        <Style TargetType="PasswordBox">
+            <Setter Property="FontSize" Value="24" />
+            <Setter Property="Padding" Value="5" />
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="BorderBrush" Value="Black" />
+        </Style>
+
         <Style TargetType="Button">
             <Setter Property="FontSize" Value="24" />
             <Setter Property="Padding" Value="10,5" />

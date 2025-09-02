@@ -1,0 +1,102 @@
+﻿{
+   "CodeGenerationMode": 4,
+   "ContextClassName": "TZ_21_07_2025Context",
+   "ContextNamespace": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": false,
+   "MinimumProductVersion": "2.6.1080",
+   "ModelNamespace": null,
+   "OutputContextPath": null,
+   "OutputPath": "Procedures",
+   "PreserveCasingWithRegex": true,
+   "ProjectRootNamespace": "DataLayer",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 2,
+   "SelectedToBeGenerated": 0,
+   "T4TemplatePath": null,
+   "Tables": [
+      {
+         "Name": "[dbo].[add_category]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[dbo].[add_product_categories]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[dbo].[add_product]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[dbo].[add_quantity_product]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[dbo].[add_user_return_id]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[dbo].[add_user]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[dbo].[search_orders_by_date]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[dbo].[search_products_by_name]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[dbo].[search_products_by_price]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[dbo].[show_products_in_category]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[dbo].[show_products_in_portions]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[dbo].[stp_user_delete]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[dbo].[stp_user_update]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[dbo].[stp_users_all]",
+         "ObjectType": 1
+      }
+   ],
+   "UiHint": null,
+   "UncountableWords": null,
+   "UseAsyncStoredProcedureCalls": true,
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": true,
+   "UseDatabaseNamesForRoutines": true,
+   "UseDateOnlyTimeOnly": true,
+   "UseDbContextSplitting": false,
+   "UseDecimalDataAnnotationForSprocResult": true,
+   "UseFluentApiOnly": true,
+   "UseHandleBars": false,
+   "UseHierarchyId": false,
+   "UseInflector": true,
+   "UseInternalAccessModifiersForSprocsAndFunctions": false,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoNavigations": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UsePrefixNavigationNaming": false,
+   "UseSchemaFolders": false,
+   "UseSchemaNamespaces": false,
+   "UseSpatial": false,
+   "UseT4": false,
+   "UseT4Split": false
+}

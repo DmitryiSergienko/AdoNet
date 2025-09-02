@@ -3,5 +3,5 @@
 namespace ViewModel.PagesViewModel;
 public class AdminPageViewModel : BasePageViewModel
 {
-    public AdminPageViewModel() {}
+    public AdminPageViewModel() { } // Нужен для дизайнера
 }

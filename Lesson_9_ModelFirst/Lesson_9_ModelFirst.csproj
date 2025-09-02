@@ -56,15 +56,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Customers.cs">
+      <DependentUpon>Model_company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Employee.cs">
+      <DependentUpon>Model_company.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model_company.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model_company.Context.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model_company.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model_company.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model_company.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model_company.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Pictures.cs">
+      <DependentUpon>Model_company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Position.cs">
+      <DependentUpon>Model_company.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -84,8 +101,14 @@
     <Content Include="Model_company.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model_company.Context.cs</LastGenOutput>
+      <DependentUpon>Model_company.edmx</DependentUpon>
     </Content>
     <Content Include="Model_company.edmx.sql" />
+    <Content Include="Model_company.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Model_company.cs</LastGenOutput>
+      <DependentUpon>Model_company.edmx</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

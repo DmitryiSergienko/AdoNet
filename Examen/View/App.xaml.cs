@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using DataLayer.Services;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using System.Windows;
 using System.Windows.Controls;
 using View.Pages;
@@ -21,6 +23,9 @@ public partial class App : Application
 
     private void ConfigureServices(IServiceCollection services)
     {
+        string connectionString = "Server=(localdb)\\MSSQLLocalDB;Database=TZ_21_07_2025;Trusted_Connection=true;TrustServerCertificate=true;";
+        services.AddDbContext<DataLayer.TZ_21_07_2025Context_Main>(options => options.UseSqlServer(connectionString));
+        services.AddScoped<UserService>();
         services.AddSingleton<INavigateService, NavigateService>();
         services.AddTransient<LoginPageViewModel>();
         services.AddTransient<RegistrationPageViewModel>();

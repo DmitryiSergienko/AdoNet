@@ -24,6 +24,11 @@
             Mail = mail;
             PhoneNumber = phone_number;
         }
+        public UsersModel(string login, string password)
+        {
+            Login = login;
+            Password = password;
+        }
         public int Id { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }

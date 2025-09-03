@@ -485,6 +485,40 @@ namespace DataLayer.Procedures
             return _;
         }
 
+        public virtual async Task<List<stp_search_user_for_authResult>> stp_search_user_for_authAsync(string login, string password, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        {
+            var parameterreturnValue = new SqlParameter
+            {
+                ParameterName = "returnValue",
+                Direction = System.Data.ParameterDirection.Output,
+                SqlDbType = System.Data.SqlDbType.Int,
+            };
+
+            var sqlParameters = new []
+            {
+                new SqlParameter
+                {
+                    ParameterName = "login",
+                    Size = 100,
+                    Value = login ?? Convert.DBNull,
+                    SqlDbType = System.Data.SqlDbType.NVarChar,
+                },
+                new SqlParameter
+                {
+                    ParameterName = "password",
+                    Size = 200,
+                    Value = password ?? Convert.DBNull,
+                    SqlDbType = System.Data.SqlDbType.NVarChar,
+                },
+                parameterreturnValue,
+            };
+            var _ = await _context.SqlQueryToListAsync<stp_search_user_for_authResult>("EXEC @returnValue = [dbo].[stp_search_user_for_auth] @login = @login, @password = @password", sqlParameters, cancellationToken);
+
+            returnValue?.SetValue(parameterreturnValue.Value);
+
+            return _;
+        }
+
         public virtual async Task<int> stp_user_deleteAsync(int? id, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter

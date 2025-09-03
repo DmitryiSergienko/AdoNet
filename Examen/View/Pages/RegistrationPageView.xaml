@@ -7,7 +7,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pagesviewmodel="clr-namespace:ViewModel.PagesViewModel;assembly=ViewModel"
     Title="Регистрация"
-    d:Background="White"
     d:DataContext="{d:DesignInstance Type=pagesviewmodel:RegistrationPageViewModel}"
     d:DesignHeight="720"
     d:DesignWidth="1280"

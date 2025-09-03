@@ -60,6 +60,10 @@
          "ObjectType": 1
       },
       {
+         "Name": "[dbo].[stp_search_user_for_auth]",
+         "ObjectType": 1
+      },
+      {
          "Name": "[dbo].[stp_user_delete]",
          "ObjectType": 1
       },

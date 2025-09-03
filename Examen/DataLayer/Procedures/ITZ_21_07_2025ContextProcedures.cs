@@ -24,6 +24,7 @@ namespace DataLayer.Procedures
         Task<List<search_products_by_priceResult>> search_products_by_priceAsync(int? start_price, int? end_price, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
         Task<List<show_products_in_categoryResult>> show_products_in_categoryAsync(int? category_id, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
         Task<List<show_products_in_portionsResult>> show_products_in_portionsAsync(int? skip_rows, int? show_rows, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
+        Task<List<stp_search_user_for_authResult>> stp_search_user_for_authAsync(string login, string password, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
         Task<int> stp_user_deleteAsync(int? id, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
         Task<int> stp_user_updateAsync(int? id, string login, string password, string name, string surname, string patronymic, string mail, string phone_number, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
         Task<List<stp_users_allResult>> stp_users_allAsync(OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);

@@ -26,24 +26,11 @@ public class RegistrationPageViewModel : BasePageViewModel
         _navigateService = navigateService;
         _userService = userService;
 
-        BackToLoginPage = new RelayCommand(obj =>
-        {
-            navigateService.NavigateTo<LoginPageViewModel>();
-        });
+        BackToLoginPage = new RelayCommand(obj => navigateService.NavigateTo<LoginPageViewModel>());
         SendFormRegistration = new RelayCommand(OnSendForm);
     }
     private async void OnSendForm(object? obj)
     {
-        MessageBox.Show(
-            $"Login: '{Login}'\n" +
-            $"Password: '{Password}'\n" +
-            $"Name: '{Name}'\n" +
-            $"Surname: '{Surname}'\n" +
-            $"Mail: '{Mail}'\n" +
-            $"Patronymic: '{Patronymic}'\n" +
-            $"Phone: '{PhoneNumber}'"
-        );
-
         if (string.IsNullOrWhiteSpace(Login) ||
             string.IsNullOrWhiteSpace(Password) ||
             string.IsNullOrWhiteSpace(Name) ||

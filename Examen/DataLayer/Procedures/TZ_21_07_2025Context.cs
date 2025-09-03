@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataLayer.Procedures;
 
-public partial class TZ_21_07_2025Context : TZ_21_07_2025Context_Main
+public partial class TZ_21_07_2025Context : DbContext
 {
     public TZ_21_07_2025Context(DbContextOptions<TZ_21_07_2025Context> options)
         : base(options)

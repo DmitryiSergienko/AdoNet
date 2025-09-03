@@ -24,7 +24,14 @@ public partial class App : Application
     private void ConfigureServices(IServiceCollection services)
     {
         string connectionString = "Server=(localdb)\\MSSQLLocalDB;Database=TZ_21_07_2025;Trusted_Connection=true;TrustServerCertificate=true;";
-        services.AddDbContext<DataLayer.TZ_21_07_2025Context_Main>(options => options.UseSqlServer(connectionString));
+        services.AddDbContext<DataLayer.Models.TZ_21_07_2025Context>(options =>
+        options.UseSqlServer(connectionString));
+
+        services.AddDbContext<DataLayer.Procedures.TZ_21_07_2025Context>(options =>
+            options.UseSqlServer(connectionString));
+
+        services.AddDbContext<DataLayer.Views.TZ_21_07_2025Context>(options =>
+            options.UseSqlServer(connectionString));
         services.AddScoped<UserService>();
         services.AddSingleton<INavigateService, NavigateService>();
         services.AddTransient<LoginPageViewModel>();

@@ -30,32 +30,39 @@
         <TextBlock
             Grid.Row="0"
             Grid.Column="0"
+            Style="{StaticResource DefaultTextBlockStyle}"
             Text="Login:" />
         <TextBox
             Grid.Row="0"
             Grid.Column="2"
             Width="200"
+            Style="{StaticResource DefaultTextBoxStyle}"
             Text="{Binding Login, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
         <TextBlock
             Grid.Row="2"
             Grid.Column="0"
+            Style="{StaticResource DefaultTextBlockStyle}"
             Text="Password:" />
         <PasswordBox
             Grid.Row="2"
             Grid.Column="2"
             Width="200"
-            local:PasswordBoxHelper.Password="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            local:PasswordBoxHelper.Password="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            Style="{StaticResource DefaultPasswordBoxStyle}" />
 
         <Button
             Grid.Row="4"
             Grid.Column="0"
             Command="{Binding NavigateToSignIn}"
-            Content="Sign In" />
+            Content="Sign In"
+            IsEnabled="{Binding IsEnabledNavigateToSignIn}"
+            Style="{StaticResource DefaultButtonStyle}" />
         <Button
             Grid.Row="4"
             Grid.Column="2"
             Command="{Binding NavigateToRegistration}"
-            Content="Registration" />
+            Content="Registration"
+            Style="{StaticResource DefaultButtonStyle}" />
     </Grid>
 </Page>

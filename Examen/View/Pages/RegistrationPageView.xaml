@@ -16,6 +16,7 @@
         <TextBlock
             Margin="0,50"
             HorizontalAlignment="Center"
+            Style="{StaticResource DefaultTextBlockStyle}"
             Text="REGISTRATION" />
 
         <Grid Width="750" Height="500">
@@ -45,77 +46,93 @@
             <TextBlock
                 Grid.Row="0"
                 Grid.Column="0"
+                Style="{StaticResource DefaultTextBlockStyle}"
                 Text="Email:" />
             <TextBox
                 Grid.Row="0"
                 Grid.Column="2"
+                Style="{StaticResource DefaultTextBoxStyle}"
                 Text="{Binding Mail, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
             <TextBlock
                 Grid.Row="2"
                 Grid.Column="0"
+                Style="{StaticResource DefaultTextBlockStyle}"
                 Text="Login:" />
             <TextBox
                 Grid.Row="2"
                 Grid.Column="2"
+                Style="{StaticResource DefaultTextBoxStyle}"
                 Text="{Binding Login, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
             <TextBlock
                 Grid.Row="4"
                 Grid.Column="0"
+                Style="{StaticResource DefaultTextBlockStyle}"
                 Text="Password:" />
             <PasswordBox
                 Grid.Row="4"
                 Grid.Column="2"
-                local:PasswordBoxHelper.Password="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                local:PasswordBoxHelper.Password="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                Style="{StaticResource DefaultPasswordBoxStyle}" />
 
             <TextBlock
                 Grid.Row="6"
                 Grid.Column="0"
+                Style="{StaticResource DefaultTextBlockStyle}"
                 Text="Name:" />
             <TextBox
                 Grid.Row="6"
                 Grid.Column="2"
+                Style="{StaticResource DefaultTextBoxStyle}"
                 Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
             <TextBlock
                 Grid.Row="8"
                 Grid.Column="0"
+                Style="{StaticResource DefaultTextBlockStyle}"
                 Text="Surname:" />
             <TextBox
                 Grid.Row="8"
                 Grid.Column="2"
+                Style="{StaticResource DefaultTextBoxStyle}"
                 Text="{Binding Surname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
             <TextBlock
                 Grid.Row="10"
                 Grid.Column="0"
+                Style="{StaticResource DefaultTextBlockStyle}"
                 Text="Patronymic:" />
             <TextBox
                 Grid.Row="10"
                 Grid.Column="2"
+                Style="{StaticResource DefaultTextBoxStyle}"
                 Text="{Binding Patronymic, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
             <TextBlock
                 Grid.Row="12"
                 Grid.Column="0"
+                Style="{StaticResource DefaultTextBlockStyle}"
                 Text="Phone:" />
             <TextBox
                 Grid.Row="12"
                 Grid.Column="2"
+                Style="{StaticResource DefaultTextBoxStyle}"
                 Text="{Binding PhoneNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
             <Button
                 Grid.Row="14"
                 Grid.Column="0"
                 Command="{Binding BackToLoginPage}"
-                Content="Back" />
+                Content="Back"
+                Style="{StaticResource DefaultButtonStyle}" />
             <Button
                 Grid.Row="14"
                 Grid.Column="2"
-                Background="#0776c4"
                 Command="{Binding SendFormRegistration}"
-                Content="Send" />
+                Content="Send"
+                IsEnabled="{Binding IsEnabledSendFormRegistration}"
+                Style="{StaticResource DefaultButtonStyle}" />
         </Grid>
 
     </StackPanel>

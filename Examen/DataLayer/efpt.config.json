@@ -52,6 +52,10 @@
          "ObjectType": 1
       },
       {
+         "Name": "[dbo].[show_all_products]",
+         "ObjectType": 1
+      },
+      {
          "Name": "[dbo].[show_products_in_category]",
          "ObjectType": 1
       },
@@ -61,6 +65,10 @@
       },
       {
          "Name": "[dbo].[stp_search_user_for_auth]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[dbo].[stp_search_user_for_info]",
          "ObjectType": 1
       },
       {

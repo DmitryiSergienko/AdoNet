@@ -10,6 +10,135 @@
     mc:Ignorable="d">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="140" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <StackPanel
+            Grid.Row="0"
+            Grid.Column="0"
+            Height="50"
+            VerticalAlignment="Top"
+            Orientation="Horizontal">
+            <Button
+                Command="{Binding ShowTop3Products}"
+                Content="Показать топ 3 товара"
+                Style="{StaticResource UserButtonStyle}" />
+            <Button
+                Command="{Binding SearchProductByName}"
+                Content="Найти продукт по названию"
+                Style="{StaticResource UserButtonStyle}" />
+            <Button
+                Command="{Binding SearchProductByPrice}"
+                Content="Найти продукт по цене"
+                Style="{StaticResource UserButtonStyle}" />
+            <Button
+                Command="{Binding ShowProductInCategory}"
+                Content="Показать продукты по категории"
+                Style="{StaticResource UserButtonStyle}" />
+            <Button
+                Command="{Binding ShowProductInPortions}"
+                Content="Показать порционно продукты"
+                Style="{StaticResource UserButtonStyle}" />
+            <Button
+                Command="{Binding SearchOrdersByDate}"
+                Content="Найти заказ по дате"
+                Style="{StaticResource UserButtonStyle}" />
+        </StackPanel>
+
+        <Button
+            Grid.Row="0"
+            Grid.Column="1"
+            Command="{Binding LogOut}"
+            Content="Выход из аккаунта"
+            Style="{StaticResource UserButtonStyle}" />
+
+        <DataGrid
+            Grid.Row="1"
+            Grid.Column="0"
+            Margin="10"
+            AutoGenerateColumns="True"
+            CanUserAddRows="False"
+            IsReadOnly="True"
+            ItemsSource="{Binding Data}" />
+
+        <Grid Grid.Row="1" Grid.Column="1">
+            <StackPanel VerticalAlignment="Top" Orientation="Vertical">
+                <Button
+                    Command="{Binding ShowUserOrderHistory}"
+                    Content="История заказов"
+                    Style="{StaticResource UserButtonStyle}" />
+                <Button
+                    Command="{Binding CreateOrder}"
+                    Content="Создать заказ"
+                    Style="{StaticResource UserButtonStyle}" />
+                <Button
+                    Command="{Binding ShowAllProducts}"
+                    Content="Показать товары"
+                    Style="{StaticResource UserButtonStyle}" />
+            </StackPanel>
+            <StackPanel VerticalAlignment="Center" Visibility="{Binding IsPortionsFormVisible}">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock
+                        Margin="8,0"
+                        Style="{StaticResource UserTextBlockStyle}"
+                        Text="Количество" />
+                    <TextBox
+                        Width="50"
+                        Style="{StaticResource UserTextBoxStyle}"
+                        Text="{Binding CountPortions, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}" />
+                </StackPanel>
+                <Button
+                    Width="80"
+                    Command="{Binding EnterCountPortions}"
+                    Content="Выбрать"
+                    IsEnabled="{Binding EnterCountPortionsIsEnabled}"
+                    Style="{StaticResource UserButtonStyle}" />
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                    <Button
+                        Margin="3"
+                        Padding="6,1,6,4"
+                        Command="{Binding LeftArrowCountPortions}"
+                        Content="←"
+                        IsEnabled="{Binding EnterCountPortionsIsEnabled}"
+                        Style="{StaticResource UserButtonStyle}" />
+                    <Button
+                        Margin="3"
+                        Padding="6,1,6,4"
+                        Command="{Binding RightArrowCountPortions}"
+                        Content="→"
+                        IsEnabled="{Binding EnterCountPortionsIsEnabled}"
+                        Style="{StaticResource UserButtonStyle}" />
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Margin="10,30" VerticalAlignment="Bottom">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Style="{StaticResource UserTextBlockStyle}" Text="Login: " />
+                    <TextBlock Style="{StaticResource UserTextBlockStyle}" Text="{Binding LoginUser}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Style="{StaticResource UserTextBlockStyle}" Text="Name: " />
+                    <TextBlock Style="{StaticResource UserTextBlockStyle}" Text="{Binding NameUser}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Style="{StaticResource UserTextBlockStyle}" Text="Surname: " />
+                    <TextBlock Style="{StaticResource UserTextBlockStyle}" Text="{Binding SurnameUser}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Style="{StaticResource UserTextBlockStyle}" Text="Email: " />
+                    <TextBlock Style="{StaticResource UserTextBlockStyle}" Text="{Binding EmailUser}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Style="{StaticResource UserTextBlockStyle}" Text="Phone: " />
+                    <TextBlock Style="{StaticResource UserTextBlockStyle}" Text="{Binding PhoneUser}" />
+                </StackPanel>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Page>

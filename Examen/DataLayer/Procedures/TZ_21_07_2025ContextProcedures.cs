@@ -427,6 +427,26 @@ namespace DataLayer.Procedures
             return _;
         }
 
+        public virtual async Task<List<show_all_productsResult>> show_all_productsAsync(OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        {
+            var parameterreturnValue = new SqlParameter
+            {
+                ParameterName = "returnValue",
+                Direction = System.Data.ParameterDirection.Output,
+                SqlDbType = System.Data.SqlDbType.Int,
+            };
+
+            var sqlParameters = new []
+            {
+                parameterreturnValue,
+            };
+            var _ = await _context.SqlQueryToListAsync<show_all_productsResult>("EXEC @returnValue = [dbo].[show_all_products]", sqlParameters, cancellationToken);
+
+            returnValue?.SetValue(parameterreturnValue.Value);
+
+            return _;
+        }
+
         public virtual async Task<List<show_products_in_categoryResult>> show_products_in_categoryAsync(int? category_id, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
@@ -513,6 +533,33 @@ namespace DataLayer.Procedures
                 parameterreturnValue,
             };
             var _ = await _context.SqlQueryToListAsync<stp_search_user_for_authResult>("EXEC @returnValue = [dbo].[stp_search_user_for_auth] @login = @login, @password = @password", sqlParameters, cancellationToken);
+
+            returnValue?.SetValue(parameterreturnValue.Value);
+
+            return _;
+        }
+
+        public virtual async Task<List<stp_search_user_for_infoResult>> stp_search_user_for_infoAsync(string login, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        {
+            var parameterreturnValue = new SqlParameter
+            {
+                ParameterName = "returnValue",
+                Direction = System.Data.ParameterDirection.Output,
+                SqlDbType = System.Data.SqlDbType.Int,
+            };
+
+            var sqlParameters = new []
+            {
+                new SqlParameter
+                {
+                    ParameterName = "login",
+                    Size = 100,
+                    Value = login ?? Convert.DBNull,
+                    SqlDbType = System.Data.SqlDbType.NVarChar,
+                },
+                parameterreturnValue,
+            };
+            var _ = await _context.SqlQueryToListAsync<stp_search_user_for_infoResult>("EXEC @returnValue = [dbo].[stp_search_user_for_info] @login = @login", sqlParameters, cancellationToken);
 
             returnValue?.SetValue(parameterreturnValue.Value);
 

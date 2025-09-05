@@ -26,12 +26,25 @@ public class LoginPageViewModel : BasePageViewModel
     public string Login
     {
         get => _login;
-        set => Set(ref _login, value);
+        set
+        {
+            Set(ref _login, value);
+            UpdateSignInButtonState();
+        }
     }
     public string Password
     {
         get => _password;
-        set => Set(ref _password, value);
+        set
+        {
+            Set(ref _password, value);
+            UpdateSignInButtonState();
+        }
+    }
+    private void UpdateSignInButtonState()
+    {
+        IsEnabledNavigateToSignIn = !string.IsNullOrWhiteSpace(Login)
+                                && !string.IsNullOrWhiteSpace(Password);
     }
     private async void OnLoginAsync(object? obj)
     {
@@ -65,6 +78,17 @@ public class LoginPageViewModel : BasePageViewModel
         catch (Exception ex)
         {
             MessageBox.Show("Ошибка: " + ex.Message);
+        }
+    }
+    
+    private bool _isEnabledNavigateToSignIn = false;
+    public bool IsEnabledNavigateToSignIn
+    {
+        get => _isEnabledNavigateToSignIn;
+        set
+        {
+            _isEnabledNavigateToSignIn = value;
+            OnPropertyChanged();
         }
     }
 }

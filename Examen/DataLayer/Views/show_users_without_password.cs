@@ -11,7 +11,7 @@ public partial class show_users_without_password
 
     public string login { get; set; }
 
-    public byte[] password { get; set; }
+    public string password { get; set; }
 
     public string name { get; set; }
 

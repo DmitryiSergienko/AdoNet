@@ -33,6 +33,12 @@
             <Setter Property="BorderBrush" Value="Black" />
         </Style>
 
+        <Style x:Key="AdminPasswordBoxStyle" TargetType="PasswordBox">
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="Padding" Value="0,-1,0,0" />
+            <Setter Property="BorderBrush" Value="Black" />
+        </Style>
+
         <Style x:Key="DefaultButtonStyle" TargetType="Button">
             <Setter Property="FontSize" Value="24" />
             <Setter Property="Padding" Value="10,5" />

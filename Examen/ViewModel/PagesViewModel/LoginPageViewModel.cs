@@ -1,5 +1,5 @@
 ﻿using DataLayer.Services;
-using Model.Models;
+using Model;
 using System.Windows;
 using System.Windows.Input;
 using ViewModel.Core;
@@ -10,10 +10,10 @@ public class LoginPageViewModel : BasePageViewModel
 {
     public LoginPageViewModel() { } // Нужен для дизайнера
     private readonly INavigateService _navigateService;
-    private readonly UserService _userService;
+    private readonly Service _userService;
     public ICommand NavigateToSignIn { get; }
     public ICommand NavigateToRegistration { get; }
-    public LoginPageViewModel(INavigateService navigateService, UserService userService)
+    public LoginPageViewModel(INavigateService navigateService, Service userService)
     {
         _navigateService = navigateService;
         _userService = userService;
@@ -55,20 +55,18 @@ public class LoginPageViewModel : BasePageViewModel
             return;
         }
 
-        var user = new UsersModel
-        (
-            Login,
-            Password
-        );
+        HumansModel user = new UsersModel(Login, Password);
+        HumansModel admin = new AdminsModel(Login, Password);
 
         try
         {
-            bool result = await _userService.OnLoginAsync(user);
-
-            if (result)
+            if (await _userService.OnLoginAsync(user))
             {
-                MessageBox.Show($"Авторизация успешна!");
                 _navigateService.NavigateTo<UserPageViewModel>();
+            }
+            else if(await _userService.OnLoginAsync(admin))
+            {
+                _navigateService.NavigateTo<AdminPageViewModel>();
             }
             else
             {

@@ -1,0 +1,917 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Examen_Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="Examen_ModelStoreContainer">
+    <EntitySet Name="adminsSet" EntityType="Examen_Model.Store.adminsSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="usersSet" EntityType="Examen_Model.Store.usersSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ordersSet" EntityType="Examen_Model.Store.ordersSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="order_historySet" EntityType="Examen_Model.Store.order_historySet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="status_ordersSet" EntityType="Examen_Model.Store.status_ordersSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="order_productsSet" EntityType="Examen_Model.Store.order_productsSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="productsSet" EntityType="Examen_Model.Store.productsSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="warehouse_productsSet" EntityType="Examen_Model.Store.warehouse_productsSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="warehousesSet" EntityType="Examen_Model.Store.warehousesSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="categoriesSet" EntityType="Examen_Model.Store.categoriesSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="product_categoriesSet" EntityType="Examen_Model.Store.product_categoriesSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="imagesSet" EntityType="Examen_Model.Store.imagesSet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="usersorders" Association="Examen_Model.Store.usersorders">
+      <End Role="users" EntitySet="usersSet" />
+      <End Role="orders" EntitySet="ordersSet" />
+    </AssociationSet>
+    <AssociationSet Name="ordersorder_history" Association="Examen_Model.Store.ordersorder_history">
+      <End Role="orders" EntitySet="ordersSet" />
+      <End Role="order_history" EntitySet="order_historySet" />
+    </AssociationSet>
+    <AssociationSet Name="status_ordersorders" Association="Examen_Model.Store.status_ordersorders">
+      <End Role="status_orders" EntitySet="status_ordersSet" />
+      <End Role="orders" EntitySet="ordersSet" />
+    </AssociationSet>
+    <AssociationSet Name="ordersorder_products" Association="Examen_Model.Store.ordersorder_products">
+      <End Role="orders" EntitySet="ordersSet" />
+      <End Role="order_products" EntitySet="order_productsSet" />
+    </AssociationSet>
+    <AssociationSet Name="productsorder_products" Association="Examen_Model.Store.productsorder_products">
+      <End Role="products" EntitySet="productsSet" />
+      <End Role="order_products" EntitySet="order_productsSet" />
+    </AssociationSet>
+    <AssociationSet Name="warehouseswarehouse_products" Association="Examen_Model.Store.warehouseswarehouse_products">
+      <End Role="warehouses" EntitySet="warehousesSet" />
+      <End Role="warehouse_products" EntitySet="warehouse_productsSet" />
+    </AssociationSet>
+    <AssociationSet Name="productswarehouse_products" Association="Examen_Model.Store.productswarehouse_products">
+      <End Role="products" EntitySet="productsSet" />
+      <End Role="warehouse_products" EntitySet="warehouse_productsSet" />
+    </AssociationSet>
+    <AssociationSet Name="new_status" Association="Examen_Model.Store.new_status">
+      <End Role="status_orders" EntitySet="status_ordersSet" />
+      <End Role="order_history" EntitySet="order_historySet" />
+    </AssociationSet>
+    <AssociationSet Name="old_status" Association="Examen_Model.Store.old_status">
+      <End Role="status_orders" EntitySet="status_ordersSet" />
+      <End Role="order_history" EntitySet="order_historySet" />
+    </AssociationSet>
+    <AssociationSet Name="productsproduct_categories" Association="Examen_Model.Store.productsproduct_categories">
+      <End Role="products" EntitySet="productsSet" />
+      <End Role="product_categories" EntitySet="product_categoriesSet" />
+    </AssociationSet>
+    <AssociationSet Name="categoriesproduct_categories" Association="Examen_Model.Store.categoriesproduct_categories">
+      <End Role="categories" EntitySet="categoriesSet" />
+      <End Role="product_categories" EntitySet="product_categoriesSet" />
+    </AssociationSet>
+    <AssociationSet Name="productsimages" Association="Examen_Model.Store.productsimages">
+      <End Role="products" EntitySet="productsSet" />
+      <End Role="images" EntitySet="imagesSet" />
+    </AssociationSet>
+    <AssociationSet Name="usersimages" Association="Examen_Model.Store.usersimages">
+      <End Role="users" EntitySet="usersSet" />
+      <End Role="images" EntitySet="imagesSet" />
+    </AssociationSet>
+    <AssociationSet Name="adminsimages" Association="Examen_Model.Store.adminsimages">
+      <End Role="admins" EntitySet="adminsSet" />
+      <End Role="images" EntitySet="imagesSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="adminsSet">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="login" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="password" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="surname" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="patronymic" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="mail" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="phone_number" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="registration_date" Type="datetime" Nullable="true" />
+    <Property Name="images_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="usersSet">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="login" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="password" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="surname" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="patronymic" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="mail" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="phone_number" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="registration_date" Type="datetime" Nullable="true" />
+    <Property Name="images_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ordersSet">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="order_placement_date" Type="datetime" Nullable="true" />
+    <Property Name="total_amount" Type="decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="address" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="user_id" Type="int" Nullable="false" />
+    <Property Name="status_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="order_historySet">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="date_of_change" Type="datetime" Nullable="true" />
+    <Property Name="comment" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="order_id" Type="int" Nullable="false" />
+    <Property Name="new_status" Type="int" Nullable="false" />
+    <Property Name="old_status" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="status_ordersSet">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="description" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="order_productsSet">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="quantity" Type="int" Nullable="false" />
+    <Property Name="price" Type="decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="order_id" Type="int" Nullable="false" />
+    <Property Name="product_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="productsSet">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="price" Type="decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="date_added" Type="datetime" Nullable="true" />
+    <Property Name="images_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="warehouse_productsSet">
+    <Key>
+      <PropertyRef Name="warehouse_id" />
+      <PropertyRef Name="product_id" />
+    </Key>
+    <Property Name="quantity" Type="int" Nullable="false" />
+    <Property Name="warehouse_id" Type="int" Nullable="false" />
+    <Property Name="product_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="warehousesSet">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="address" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="categoriesSet">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="description" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="product_categoriesSet">
+    <Key>
+      <PropertyRef Name="product_id" />
+      <PropertyRef Name="category_id" />
+    </Key>
+    <Property Name="product_id" Type="int" Nullable="false" />
+    <Property Name="category_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="imagesSet">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="image" Type="varbinary(max)" Nullable="true" />
+  </EntityType>
+  <Association Name="usersorders">
+    <End Role="users" Type="Examen_Model.Store.usersSet" Multiplicity="1" />
+    <End Role="orders" Type="Examen_Model.Store.ordersSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="orders">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ordersorder_history">
+    <End Role="orders" Type="Examen_Model.Store.ordersSet" Multiplicity="1" />
+    <End Role="order_history" Type="Examen_Model.Store.order_historySet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="orders">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="order_history">
+        <PropertyRef Name="order_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="status_ordersorders">
+    <End Role="status_orders" Type="Examen_Model.Store.status_ordersSet" Multiplicity="1" />
+    <End Role="orders" Type="Examen_Model.Store.ordersSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="status_orders">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="orders">
+        <PropertyRef Name="status_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ordersorder_products">
+    <End Role="orders" Type="Examen_Model.Store.ordersSet" Multiplicity="1" />
+    <End Role="order_products" Type="Examen_Model.Store.order_productsSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="orders">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="order_products">
+        <PropertyRef Name="order_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="productsorder_products">
+    <End Role="products" Type="Examen_Model.Store.productsSet" Multiplicity="1" />
+    <End Role="order_products" Type="Examen_Model.Store.order_productsSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="products">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="order_products">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="warehouseswarehouse_products">
+    <End Role="warehouses" Type="Examen_Model.Store.warehousesSet" Multiplicity="1" />
+    <End Role="warehouse_products" Type="Examen_Model.Store.warehouse_productsSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="warehouses">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="warehouse_products">
+        <PropertyRef Name="warehouse_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="productswarehouse_products">
+    <End Role="products" Type="Examen_Model.Store.productsSet" Multiplicity="1" />
+    <End Role="warehouse_products" Type="Examen_Model.Store.warehouse_productsSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="products">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="warehouse_products">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="new_status">
+    <End Role="status_orders" Type="Examen_Model.Store.status_ordersSet" Multiplicity="1" />
+    <End Role="order_history" Type="Examen_Model.Store.order_historySet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="status_orders">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="order_history">
+        <PropertyRef Name="new_status" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="old_status">
+    <End Role="status_orders" Type="Examen_Model.Store.status_ordersSet" Multiplicity="0..1" />
+    <End Role="order_history" Type="Examen_Model.Store.order_historySet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="status_orders">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="order_history">
+        <PropertyRef Name="old_status" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="productsproduct_categories">
+    <End Role="products" Type="Examen_Model.Store.productsSet" Multiplicity="1" />
+    <End Role="product_categories" Type="Examen_Model.Store.product_categoriesSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="products">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="product_categories">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="categoriesproduct_categories">
+    <End Role="categories" Type="Examen_Model.Store.categoriesSet" Multiplicity="1" />
+    <End Role="product_categories" Type="Examen_Model.Store.product_categoriesSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="categories">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="product_categories">
+        <PropertyRef Name="category_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="productsimages">
+    <End Role="products" Type="Examen_Model.Store.productsSet" Multiplicity="*" />
+    <End Role="images" Type="Examen_Model.Store.imagesSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="images">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="products">
+        <PropertyRef Name="images_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="usersimages">
+    <End Role="users" Type="Examen_Model.Store.usersSet" Multiplicity="*" />
+    <End Role="images" Type="Examen_Model.Store.imagesSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="images">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="users">
+        <PropertyRef Name="images_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="adminsimages">
+    <End Role="admins" Type="Examen_Model.Store.adminsSet" Multiplicity="*" />
+    <End Role="images" Type="Examen_Model.Store.imagesSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="images">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="admins">
+        <PropertyRef Name="images_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Examen_Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="Examen_ModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="adminsSet" EntityType="Examen_Model.admins" />
+          <EntitySet Name="usersSet" EntityType="Examen_Model.users" />
+          <EntitySet Name="ordersSet" EntityType="Examen_Model.orders" />
+          <AssociationSet Name="usersorders" Association="Examen_Model.usersorders">
+            <End Role="users" EntitySet="usersSet" />
+            <End Role="orders" EntitySet="ordersSet" />
+          </AssociationSet>
+          <EntitySet Name="order_historySet" EntityType="Examen_Model.order_history" />
+          <AssociationSet Name="ordersorder_history" Association="Examen_Model.ordersorder_history">
+            <End Role="orders" EntitySet="ordersSet" />
+            <End Role="order_history" EntitySet="order_historySet" />
+          </AssociationSet>
+          <EntitySet Name="status_ordersSet" EntityType="Examen_Model.status_orders" />
+          <AssociationSet Name="status_ordersorders" Association="Examen_Model.status_ordersorders">
+            <End Role="status_orders" EntitySet="status_ordersSet" />
+            <End Role="orders" EntitySet="ordersSet" />
+          </AssociationSet>
+          <EntitySet Name="order_productsSet" EntityType="Examen_Model.order_products" />
+          <AssociationSet Name="ordersorder_products" Association="Examen_Model.ordersorder_products">
+            <End Role="orders" EntitySet="ordersSet" />
+            <End Role="order_products" EntitySet="order_productsSet" />
+          </AssociationSet>
+          <EntitySet Name="productsSet" EntityType="Examen_Model.products" />
+          <AssociationSet Name="productsorder_products" Association="Examen_Model.productsorder_products">
+            <End Role="products" EntitySet="productsSet" />
+            <End Role="order_products" EntitySet="order_productsSet" />
+          </AssociationSet>
+          <EntitySet Name="warehouse_productsSet" EntityType="Examen_Model.warehouse_products" />
+          <EntitySet Name="warehousesSet" EntityType="Examen_Model.warehouses" />
+          <AssociationSet Name="warehouseswarehouse_products" Association="Examen_Model.warehouseswarehouse_products">
+            <End Role="warehouses" EntitySet="warehousesSet" />
+            <End Role="warehouse_products" EntitySet="warehouse_productsSet" />
+          </AssociationSet>
+          <AssociationSet Name="productswarehouse_products" Association="Examen_Model.productswarehouse_products">
+            <End Role="products" EntitySet="productsSet" />
+            <End Role="warehouse_products" EntitySet="warehouse_productsSet" />
+          </AssociationSet>
+          <AssociationSet Name="new_status" Association="Examen_Model.new_status">
+            <End Role="status_orders" EntitySet="status_ordersSet" />
+            <End Role="order_history" EntitySet="order_historySet" />
+          </AssociationSet>
+          <AssociationSet Name="old_status" Association="Examen_Model.old_status">
+            <End Role="status_orders" EntitySet="status_ordersSet" />
+            <End Role="order_history" EntitySet="order_historySet" />
+          </AssociationSet>
+          <EntitySet Name="categoriesSet" EntityType="Examen_Model.categories" />
+          <EntitySet Name="product_categoriesSet" EntityType="Examen_Model.product_categories" />
+          <AssociationSet Name="productsproduct_categories" Association="Examen_Model.productsproduct_categories">
+            <End Role="products" EntitySet="productsSet" />
+            <End Role="product_categories" EntitySet="product_categoriesSet" />
+          </AssociationSet>
+          <AssociationSet Name="categoriesproduct_categories" Association="Examen_Model.categoriesproduct_categories">
+            <End Role="categories" EntitySet="categoriesSet" />
+            <End Role="product_categories" EntitySet="product_categoriesSet" />
+          </AssociationSet>
+          <EntitySet Name="imagesSet" EntityType="Examen_Model.images" />
+          <AssociationSet Name="productsimages" Association="Examen_Model.productsimages">
+            <End Role="products" EntitySet="productsSet" />
+            <End Role="images" EntitySet="imagesSet" />
+          </AssociationSet>
+          <AssociationSet Name="usersimages" Association="Examen_Model.usersimages">
+            <End Role="users" EntitySet="usersSet" />
+            <End Role="images" EntitySet="imagesSet" />
+          </AssociationSet>
+          <AssociationSet Name="adminsimages" Association="Examen_Model.adminsimages">
+            <End Role="admins" EntitySet="adminsSet" />
+            <End Role="images" EntitySet="imagesSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="admins">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="login" Type="String" Nullable="false" MaxLength="Max" Unicode="true" />
+          <Property Name="password" Type="String" Nullable="true" MaxLength="Max" Unicode="true" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" />
+          <Property Name="surname" Type="String" Nullable="false" MaxLength="Max" Unicode="true" />
+          <Property Name="patronymic" Type="String" Nullable="true" MaxLength="Max" Unicode="true" />
+          <Property Name="mail" Type="String" Nullable="false" MaxLength="Max" Unicode="true" />
+          <Property Name="phone_number" Type="String" Nullable="true" MaxLength="Max" Unicode="true" />
+          <Property Name="registration_date" Type="DateTime" Nullable="true" />
+          <NavigationProperty Name="images" Relationship="Examen_Model.adminsimages" FromRole="admins" ToRole="images" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="login" Type="String" Nullable="false" MaxLength="Max" Unicode="true" />
+          <Property Name="password" Type="String" Nullable="true" MaxLength="Max" Unicode="true" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" />
+          <Property Name="surname" Type="String" Nullable="false" MaxLength="Max" Unicode="true" />
+          <Property Name="patronymic" Type="String" Nullable="true" MaxLength="Max" Unicode="true" />
+          <Property Name="mail" Type="String" Nullable="false" MaxLength="Max" Unicode="true" />
+          <Property Name="phone_number" Type="String" Nullable="true" MaxLength="Max" Unicode="true" />
+          <Property Name="registration_date" Type="DateTime" Nullable="true" />
+          <NavigationProperty Name="orders" Relationship="Examen_Model.usersorders" FromRole="users" ToRole="orders" />
+          <NavigationProperty Name="images" Relationship="Examen_Model.usersimages" FromRole="users" ToRole="images" />
+        </EntityType>
+        <EntityType Name="orders">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="order_placement_date" Type="DateTime" Nullable="true" />
+          <Property Name="total_amount" Type="Decimal" Nullable="false" Scale="2" Precision="18" />
+          <Property Name="address" Type="String" Nullable="true" MaxLength="Max" Unicode="true" />
+          <NavigationProperty Name="users" Relationship="Examen_Model.usersorders" FromRole="orders" ToRole="users" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="order_history" Relationship="Examen_Model.ordersorder_history" FromRole="orders" ToRole="order_history" />
+          <NavigationProperty Name="status_orders" Relationship="Examen_Model.status_ordersorders" FromRole="orders" ToRole="status_orders" />
+          <Property Name="status_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="order_products" Relationship="Examen_Model.ordersorder_products" FromRole="orders" ToRole="order_products" />
+        </EntityType>
+        <Association Name="usersorders">
+          <End Type="Examen_Model.users" Role="users" Multiplicity="1" />
+          <End Type="Examen_Model.orders" Role="orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="orders">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="order_history">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="date_of_change" Type="DateTime" Nullable="true" />
+          <Property Name="comment" Type="String" Nullable="true" MaxLength="Max" Unicode="true" />
+          <NavigationProperty Name="orders" Relationship="Examen_Model.ordersorder_history" FromRole="order_history" ToRole="orders" />
+          <Property Name="order_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="status_orders" Relationship="Examen_Model.new_status" FromRole="order_history" ToRole="status_orders" />
+          <Property Name="new_status" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="status_orders1" Relationship="Examen_Model.old_status" FromRole="order_history" ToRole="status_orders" />
+          <Property Name="old_status" Type="Int32" Nullable="true" />
+        </EntityType>
+        <Association Name="ordersorder_history">
+          <End Type="Examen_Model.orders" Role="orders" Multiplicity="1" />
+          <End Type="Examen_Model.order_history" Role="order_history" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="orders">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="order_history">
+              <PropertyRef Name="order_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="status_orders">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" />
+          <Property Name="description" Type="String" Nullable="false" MaxLength="Max" Unicode="true" />
+          <NavigationProperty Name="orders" Relationship="Examen_Model.status_ordersorders" FromRole="status_orders" ToRole="orders" />
+          <NavigationProperty Name="order_history" Relationship="Examen_Model.new_status" FromRole="status_orders" ToRole="order_history" />
+          <NavigationProperty Name="order_history1" Relationship="Examen_Model.old_status" FromRole="status_orders" ToRole="order_history" />
+        </EntityType>
+        <Association Name="status_ordersorders">
+          <End Type="Examen_Model.status_orders" Role="status_orders" Multiplicity="1" />
+          <End Type="Examen_Model.orders" Role="orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status_orders">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="orders">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="order_products">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="quantity" Type="Int32" Nullable="false" />
+          <Property Name="price" Type="Decimal" Nullable="false" Scale="2" Precision="18" />
+          <NavigationProperty Name="orders" Relationship="Examen_Model.ordersorder_products" FromRole="order_products" ToRole="orders" />
+          <Property Name="order_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="products" Relationship="Examen_Model.productsorder_products" FromRole="order_products" ToRole="products" />
+          <Property Name="product_id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="ordersorder_products">
+          <End Type="Examen_Model.orders" Role="orders" Multiplicity="1" />
+          <End Type="Examen_Model.order_products" Role="order_products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="orders">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="order_products">
+              <PropertyRef Name="order_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="products">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" />
+          <Property Name="description" Type="String" Nullable="false" MaxLength="Max" Unicode="true" />
+          <Property Name="price" Type="Decimal" Nullable="false" Scale="2" Precision="18" />
+          <Property Name="date_added" Type="DateTime" Nullable="true" />
+          <NavigationProperty Name="order_products" Relationship="Examen_Model.productsorder_products" FromRole="products" ToRole="order_products" />
+          <NavigationProperty Name="warehouse_products" Relationship="Examen_Model.productswarehouse_products" FromRole="products" ToRole="warehouse_products" />
+          <NavigationProperty Name="product_categories" Relationship="Examen_Model.productsproduct_categories" FromRole="products" ToRole="product_categories" />
+          <NavigationProperty Name="images" Relationship="Examen_Model.productsimages" FromRole="products" ToRole="images" />
+        </EntityType>
+        <Association Name="productsorder_products">
+          <End Type="Examen_Model.products" Role="products" Multiplicity="1" />
+          <End Type="Examen_Model.order_products" Role="order_products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="products">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="order_products">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="warehouse_products" >
+          <Key>
+            <PropertyRef Name="warehouse_id" />
+            <PropertyRef Name="product_id" />
+          </Key>
+          <Property Name="quantity" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="warehouses" Relationship="Examen_Model.warehouseswarehouse_products" FromRole="warehouse_products" ToRole="warehouses" />
+          <Property Name="warehouse_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="products" Relationship="Examen_Model.productswarehouse_products" FromRole="warehouse_products" ToRole="products" />
+          <Property Name="product_id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="warehouses">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" />
+          <Property Name="description" Type="String" Nullable="false" MaxLength="Max" Unicode="true" />
+          <Property Name="address" Type="String" Nullable="true" MaxLength="Max" Unicode="true" />
+          <NavigationProperty Name="warehouse_products" Relationship="Examen_Model.warehouseswarehouse_products" FromRole="warehouses" ToRole="warehouse_products" />
+        </EntityType>
+        <Association Name="warehouseswarehouse_products">
+          <End Type="Examen_Model.warehouses" Role="warehouses" Multiplicity="1" />
+          <End Type="Examen_Model.warehouse_products" Role="warehouse_products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="warehouses">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="warehouse_products">
+              <PropertyRef Name="warehouse_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="productswarehouse_products">
+          <End Type="Examen_Model.products" Role="products" Multiplicity="1" />
+          <End Type="Examen_Model.warehouse_products" Role="warehouse_products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="products">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="warehouse_products">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="new_status">
+          <End Type="Examen_Model.status_orders" Role="status_orders" Multiplicity="1" />
+          <End Type="Examen_Model.order_history" Role="order_history" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status_orders">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="order_history">
+              <PropertyRef Name="new_status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="old_status">
+          <End Type="Examen_Model.status_orders" Role="status_orders" Multiplicity="0..1" />
+          <End Type="Examen_Model.order_history" Role="order_history" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status_orders">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="order_history">
+              <PropertyRef Name="old_status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="categories">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" />
+          <Property Name="description" Type="String" Nullable="false" MaxLength="Max" Unicode="true" />
+          <NavigationProperty Name="product_categories" Relationship="Examen_Model.categoriesproduct_categories" FromRole="categories" ToRole="product_categories" />
+        </EntityType>
+        <EntityType Name="product_categories" >
+          <Key>
+            <PropertyRef Name="product_id" />
+            <PropertyRef Name="category_id" />
+          </Key>
+          <NavigationProperty Name="products" Relationship="Examen_Model.productsproduct_categories" FromRole="product_categories" ToRole="products" />
+          <Property Name="product_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="categories" Relationship="Examen_Model.categoriesproduct_categories" FromRole="product_categories" ToRole="categories" />
+          <Property Name="category_id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="productsproduct_categories">
+          <End Type="Examen_Model.products" Role="products" Multiplicity="1" />
+          <End Type="Examen_Model.product_categories" Role="product_categories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="products">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="product_categories">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="categoriesproduct_categories">
+          <End Type="Examen_Model.categories" Role="categories" Multiplicity="1" />
+          <End Type="Examen_Model.product_categories" Role="product_categories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categories">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="product_categories">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="images">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" />
+          <Property Name="image" Type="Binary" Nullable="true" MaxLength="Max" />
+          <NavigationProperty Name="products" Relationship="Examen_Model.productsimages" FromRole="images" ToRole="products" />
+          <NavigationProperty Name="users" Relationship="Examen_Model.usersimages" FromRole="images" ToRole="users" />
+          <NavigationProperty Name="admins" Relationship="Examen_Model.adminsimages" FromRole="images" ToRole="admins" />
+          </EntityType>
+        <Association Name="productsimages">
+          <End Type="Examen_Model.products" Role="products" Multiplicity="0..1" />
+          <End Type="Examen_Model.images" Role="images" Multiplicity="1" />
+        </Association>
+        <Association Name="usersimages">
+          <End Type="Examen_Model.users" Role="users" Multiplicity="0..1" />
+          <End Type="Examen_Model.images" Role="images" Multiplicity="1" />
+        </Association>
+        <Association Name="adminsimages">
+          <End Type="Examen_Model.admins" Role="admins" Multiplicity="0..1" />
+          <End Type="Examen_Model.images" Role="images" Multiplicity="1" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Examen_ModelStoreContainer" CdmEntityContainer="Examen_ModelContainer">
+    <EntitySetMapping Name="adminsSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Examen_Model.admins)">
+        <MappingFragment StoreEntitySet="adminsSet">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="surname" ColumnName="surname" />
+          <ScalarProperty Name="patronymic" ColumnName="patronymic" />
+          <ScalarProperty Name="mail" ColumnName="mail" />
+          <ScalarProperty Name="phone_number" ColumnName="phone_number" />
+          <ScalarProperty Name="registration_date" ColumnName="registration_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usersSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Examen_Model.users)">
+        <MappingFragment StoreEntitySet="usersSet">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="surname" ColumnName="surname" />
+          <ScalarProperty Name="patronymic" ColumnName="patronymic" />
+          <ScalarProperty Name="mail" ColumnName="mail" />
+          <ScalarProperty Name="phone_number" ColumnName="phone_number" />
+          <ScalarProperty Name="registration_date" ColumnName="registration_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ordersSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Examen_Model.orders)">
+        <MappingFragment StoreEntitySet="ordersSet">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="order_placement_date" ColumnName="order_placement_date" />
+          <ScalarProperty Name="total_amount" ColumnName="total_amount" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="status_id" ColumnName="status_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="order_historySet">
+      <EntityTypeMapping TypeName="IsTypeOf(Examen_Model.order_history)">
+        <MappingFragment StoreEntitySet="order_historySet">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="date_of_change" ColumnName="date_of_change" />
+          <ScalarProperty Name="comment" ColumnName="comment" />
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="new_status" ColumnName="new_status" />
+          <ScalarProperty Name="old_status" ColumnName="old_status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="status_ordersSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Examen_Model.status_orders)">
+        <MappingFragment StoreEntitySet="status_ordersSet">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="order_productsSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Examen_Model.order_products)">
+        <MappingFragment StoreEntitySet="order_productsSet">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="productsSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Examen_Model.products)">
+        <MappingFragment StoreEntitySet="productsSet">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="date_added" ColumnName="date_added" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="warehouse_productsSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Examen_Model.warehouse_products)">
+        <MappingFragment StoreEntitySet="warehouse_productsSet">
+          <ScalarProperty Name="warehouse_id" ColumnName="warehouse_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="warehousesSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Examen_Model.warehouses)">
+        <MappingFragment StoreEntitySet="warehousesSet">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="address" ColumnName="address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="categoriesSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Examen_Model.categories)">
+        <MappingFragment StoreEntitySet="categoriesSet">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="product_categoriesSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Examen_Model.product_categories)">
+        <MappingFragment StoreEntitySet="product_categoriesSet">
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="imagesSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Examen_Model.images)">
+        <MappingFragment StoreEntitySet="imagesSet">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="image" ColumnName="image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="productsimages" TypeName="Examen_Model.productsimages" StoreEntitySet="productsSet">
+      <EndProperty Name="images">
+        <ScalarProperty Name="id" ColumnName="images_id" />
+      </EndProperty>
+      <EndProperty Name="products">
+        <ScalarProperty Name="id" ColumnName="id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="usersimages" TypeName="Examen_Model.usersimages" StoreEntitySet="usersSet">
+      <EndProperty Name="images">
+        <ScalarProperty Name="id" ColumnName="images_id" />
+      </EndProperty>
+      <EndProperty Name="users">
+        <ScalarProperty Name="id" ColumnName="id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="adminsimages" TypeName="Examen_Model.adminsimages" StoreEntitySet="adminsSet">
+      <EndProperty Name="images">
+        <ScalarProperty Name="id" ColumnName="images_id" />
+      </EndProperty>
+      <EndProperty Name="admins">
+        <ScalarProperty Name="id" ColumnName="id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

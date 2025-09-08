@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="820ba9e9306c4668a2d972b48228cf24" Name="Diagram1" ZoomLevel="118" >
+        <EntityTypeShape EntityType="Examen_Model.admins" Width="1.5" PointX="1.25" PointY="0.5" />
+        <EntityTypeShape EntityType="Examen_Model.users" Width="1.5" PointX="4.5" PointY="0.5" />
+        <EntityTypeShape EntityType="Examen_Model.orders" Width="1.5" PointX="4.5" PointY="3.75" />
+        <AssociationConnector Association="Examen_Model.usersorders" />
+        <EntityTypeShape EntityType="Examen_Model.order_history" Width="1.5" PointX="6.75" PointY="6.75" />
+        <AssociationConnector Association="Examen_Model.ordersorder_history" />
+        <EntityTypeShape EntityType="Examen_Model.status_orders" Width="1.5" PointX="7" PointY="3.75" />
+        <AssociationConnector Association="Examen_Model.status_ordersorders" />
+        <EntityTypeShape EntityType="Examen_Model.order_products" Width="1.5" PointX="4.5" PointY="7.125" />
+        <AssociationConnector Association="Examen_Model.ordersorder_products" />
+        <EntityTypeShape EntityType="Examen_Model.products" Width="1.5" PointX="4.5" PointY="9.75" />
+        <AssociationConnector Association="Examen_Model.productsorder_products" />
+        <EntityTypeShape EntityType="Examen_Model.warehouse_products" Width="1.5" PointX="6.375" PointY="9.75" />
+        <EntityTypeShape EntityType="Examen_Model.warehouses" Width="1.5" PointX="8.25" PointY="9.75" />
+        <AssociationConnector Association="Examen_Model.warehouseswarehouse_products" />
+        <AssociationConnector Association="Examen_Model.productswarehouse_products" />
+        <AssociationConnector Association="Examen_Model.new_status" />
+        <AssociationConnector Association="Examen_Model.old_status" />
+        <EntityTypeShape EntityType="Examen_Model.categories" Width="1.5" PointX="8.5" PointY="12.75" />
+        <EntityTypeShape EntityType="Examen_Model.product_categories" Width="1.5" PointX="6.5" PointY="12.75" />
+        <AssociationConnector Association="Examen_Model.productsproduct_categories" />
+        <AssociationConnector Association="Examen_Model.categoriesproduct_categories" />
+        <EntityTypeShape EntityType="Examen_Model.images" Width="1.5" PointX="1.25" PointY="4" />
+        <AssociationConnector Association="Examen_Model.productsimages" />
+        <AssociationConnector Association="Examen_Model.usersimages" />
+        <AssociationConnector Association="Examen_Model.adminsimages" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

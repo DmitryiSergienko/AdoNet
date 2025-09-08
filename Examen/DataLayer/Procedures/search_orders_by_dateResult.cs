@@ -9,12 +9,12 @@ namespace DataLayer.Procedures
     public partial class search_orders_by_dateResult
     {
         public int id { get; set; }
-        public int user_id { get; set; }
         public DateTime? order_placement_date { get; set; }
         [Column("total_amount", TypeName = "decimal(18,2)")]
         public decimal total_amount { get; set; }
-        public int status_id { get; set; }
-        [StringLength(500)]
+        [StringLength(2147483647)]
         public string address { get; set; }
+        public int user_id { get; set; }
+        public int status_id { get; set; }
     }
 }

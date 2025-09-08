@@ -1,13 +1,13 @@
 ﻿{
    "CodeGenerationMode": 4,
-   "ContextClassName": "TZ_21_07_2025Context",
+   "ContextClassName": "DataBaseContext",
    "ContextNamespace": null,
    "FilterSchemas": false,
    "IncludeConnectionString": false,
    "MinimumProductVersion": "2.6.1080",
    "ModelNamespace": null,
    "OutputContextPath": null,
-   "OutputPath": "Procedures",
+   "OutputPath": "Models",
    "PreserveCasingWithRegex": true,
    "ProjectRootNamespace": "DataLayer",
    "Schemas": null,
@@ -16,72 +16,52 @@
    "T4TemplatePath": null,
    "Tables": [
       {
-         "Name": "[dbo].[add_category]",
-         "ObjectType": 1
+         "Name": "[dbo].[adminsSet]",
+         "ObjectType": 0
       },
       {
-         "Name": "[dbo].[add_product_categories]",
-         "ObjectType": 1
+         "Name": "[dbo].[categoriesSet]",
+         "ObjectType": 0
       },
       {
-         "Name": "[dbo].[add_product]",
-         "ObjectType": 1
+         "Name": "[dbo].[imagesSet]",
+         "ObjectType": 0
       },
       {
-         "Name": "[dbo].[add_quantity_product]",
-         "ObjectType": 1
+         "Name": "[dbo].[order_historySet]",
+         "ObjectType": 0
       },
       {
-         "Name": "[dbo].[add_user_return_id]",
-         "ObjectType": 1
+         "Name": "[dbo].[order_productsSet]",
+         "ObjectType": 0
       },
       {
-         "Name": "[dbo].[add_user]",
-         "ObjectType": 1
+         "Name": "[dbo].[ordersSet]",
+         "ObjectType": 0
       },
       {
-         "Name": "[dbo].[search_orders_by_date]",
-         "ObjectType": 1
+         "Name": "[dbo].[product_categoriesSet]",
+         "ObjectType": 0
       },
       {
-         "Name": "[dbo].[search_products_by_name]",
-         "ObjectType": 1
+         "Name": "[dbo].[productsSet]",
+         "ObjectType": 0
       },
       {
-         "Name": "[dbo].[search_products_by_price]",
-         "ObjectType": 1
+         "Name": "[dbo].[status_ordersSet]",
+         "ObjectType": 0
       },
       {
-         "Name": "[dbo].[show_all_products]",
-         "ObjectType": 1
+         "Name": "[dbo].[usersSet]",
+         "ObjectType": 0
       },
       {
-         "Name": "[dbo].[show_products_in_category]",
-         "ObjectType": 1
+         "Name": "[dbo].[warehouse_productsSet]",
+         "ObjectType": 0
       },
       {
-         "Name": "[dbo].[show_products_in_portions]",
-         "ObjectType": 1
-      },
-      {
-         "Name": "[dbo].[stp_search_user_for_auth]",
-         "ObjectType": 1
-      },
-      {
-         "Name": "[dbo].[stp_search_user_for_info]",
-         "ObjectType": 1
-      },
-      {
-         "Name": "[dbo].[stp_user_delete]",
-         "ObjectType": 1
-      },
-      {
-         "Name": "[dbo].[stp_user_update]",
-         "ObjectType": 1
-      },
-      {
-         "Name": "[dbo].[stp_users_all]",
-         "ObjectType": 1
+         "Name": "[dbo].[warehousesSet]",
+         "ObjectType": 0
       }
    ],
    "UiHint": null,

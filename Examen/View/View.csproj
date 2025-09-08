@@ -10,6 +10,88 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\aleksey_n.jpg" />
+    <None Remove="Resources\anna_smirnova.jpg" />
+    <None Remove="Resources\dmitry_s.jpg" />
+    <None Remove="Resources\ekaterina_m.jpg" />
+    <None Remove="Resources\ivan_ivanov.jpg" />
+    <None Remove="Resources\Johnny_Cash.jpg" />
+    <None Remove="Resources\maria_fedorova.jpg" />
+    <None Remove="Resources\nina_kuznetsova.jpg" />
+    <None Remove="Resources\no_pass.jpg" />
+    <None Remove="Resources\olga_ivanova.jpg" />
+    <None Remove="Resources\petr_petrov.jpg" />
+    <None Remove="Resources\sergey_kozlov.jpg" />
+    <None Remove="Resources\Tony_Hawk.jpg" />
+    <None Remove="Resources\user_no_pass.jpg" />
+    <None Remove="Resources\Книга_SQL_для_начинающих.jpg" />
+    <None Remove="Resources\Микроволновая_печь.jpg" />
+    <None Remove="Resources\Смартфон_XYZ.jpg" />
+    <None Remove="Resources\Теннисная_ракетка.jpg" />
+    <None Remove="Resources\Футболка_хлопковая.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\aleksey_n.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\anna_smirnova.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\dmitry_s.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ekaterina_m.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ivan_ivanov.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Johnny_Cash.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\maria_fedorova.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\nina_kuznetsova.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\no_pass.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\olga_ivanova.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\petr_petrov.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\sergey_kozlov.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tony_Hawk.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\user_no_pass.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Книга_SQL_для_начинающих.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Микроволновая_печь.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Смартфон_XYZ.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Теннисная_ракетка.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Футболка_хлопковая.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="EntityFramework" Version="6.5.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.8">

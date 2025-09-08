@@ -9,9 +9,9 @@ namespace DataLayer.Procedures
     public partial class search_products_by_priceResult
     {
         public int id { get; set; }
-        [StringLength(200)]
+        [StringLength(2147483647)]
         public string name { get; set; }
-        [StringLength(1000)]
+        [StringLength(2147483647)]
         public string description { get; set; }
         [Column("price", TypeName = "decimal(18,2)")]
         public decimal price { get; set; }

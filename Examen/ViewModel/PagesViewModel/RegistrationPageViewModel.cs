@@ -1,5 +1,5 @@
 ﻿using DataLayer.Services;
-using Model.Models;
+using Model;
 using System.Windows;
 using System.Windows.Input;
 using ViewModel.Core;
@@ -10,7 +10,7 @@ public class RegistrationPageViewModel : BasePageViewModel
 {
     public RegistrationPageViewModel() { } // Нужен для дизайнера
     private readonly INavigateService _navigateService;
-    private readonly UserService _userService;
+    private readonly Service _userService;
     public ICommand BackToLoginPage { get; }
     public ICommand SendFormRegistration { get; }
 
@@ -21,7 +21,7 @@ public class RegistrationPageViewModel : BasePageViewModel
     private string _patronymic;
     private string _mail;
     private string _phoneNumber;
-    public RegistrationPageViewModel(INavigateService navigateService, UserService userService)
+    public RegistrationPageViewModel(INavigateService navigateService, Service userService)
     {
         _navigateService = navigateService;
         _userService = userService;
@@ -54,7 +54,7 @@ public class RegistrationPageViewModel : BasePageViewModel
 
         try
         {
-            int newId = await _userService.AddUserAsync(user);
+            int newId = await _userService.AddHumanAsync(user);
 
             if (newId > 0)
             {

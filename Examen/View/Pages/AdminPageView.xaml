@@ -3,16 +3,145 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:helpers="clr-namespace:View.Helpers"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pagesviewmodel="clr-namespace:ViewModel.PagesViewModel;assembly=ViewModel"
     Title="Панель администратора"
+    d:DataContext="{d:DesignInstance Type=pagesviewmodel:AdminPageViewModel}"
     d:DesignHeight="720"
     d:DesignWidth="1280"
     mc:Ignorable="d">
+    <Page.Resources>
+        <helpers:ByteToImageConverter x:Key="ByteToImageConverter" />
+    </Page.Resources>
 
     <Grid>
-        <TextBlock
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            Text="ADMIN" />
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="140" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <StackPanel
+            Grid.Row="0"
+            Grid.Column="0"
+            Height="50"
+            Margin="6,0,0,0"
+            VerticalAlignment="Top"
+            Orientation="Horizontal">
+            <Button
+                Grid.Row="0"
+                Grid.Column="1"
+                Command="{Binding ExecuteQueryCommand}"
+                Content="Выполнить"
+                Style="{StaticResource UserButtonStyle}" />
+            <TextBox
+                Width="1018"
+                Margin="10,5"
+                AcceptsReturn="True"
+                Text="{Binding InputArea}"
+                VerticalScrollBarVisibility="Auto" />
+        </StackPanel>
+
+        <Button
+            Grid.Row="0"
+            Grid.Column="1"
+            Command="{Binding LogOut}"
+            Content="Выход из аккаунта"
+            Style="{StaticResource UserButtonStyle}" />
+
+        <DataGrid
+            Grid.Row="1"
+            Grid.Column="0"
+            Margin="10"
+            AutoGenerateColumns="True"
+            AutoGeneratingColumn="DataGrid_AutoGeneratingColumn"
+            CanUserAddRows="False"
+            IsReadOnly="True"
+            ItemsSource="{Binding DataTableAdmin}" />
+
+        <Grid Grid.Row="1" Grid.Column="1">
+            <StackPanel VerticalAlignment="Top" Orientation="Vertical">
+                <Button
+                    Command="{Binding AddUser}"
+                    Content="Добавить юзера"
+                    Style="{StaticResource UserButtonStyle}" />
+                <Button
+                    Command="{Binding UpdateUser}"
+                    Content="Обновить юзера"
+                    Style="{StaticResource UserButtonStyle}" />
+                <Button
+                    Command="{Binding DeleteUser}"
+                    Content="Удалить юзера"
+                    Style="{StaticResource UserButtonStyle}" />
+                <Button
+                    Command="{Binding AddAdmin}"
+                    Content="Добавить админа"
+                    Style="{StaticResource UserButtonStyle}" />
+                <Button
+                    Command="{Binding UpdateAdmin}"
+                    Content="Обновить админа"
+                    Style="{StaticResource UserButtonStyle}" />
+                <Button
+                    Command="{Binding DeleteAdmin}"
+                    Content="Удалить админа"
+                    Style="{StaticResource UserButtonStyle}" />
+                <Button
+                    Command="{Binding AddProduct}"
+                    Content="Добавить продукт"
+                    Style="{StaticResource UserButtonStyle}" />
+                <Button
+                    Command="{Binding UpdateProduct}"
+                    Content="Обновить продукт"
+                    Style="{StaticResource UserButtonStyle}" />
+                <Button
+                    Command="{Binding DeleteProduct}"
+                    Content="Удалить продукт"
+                    Style="{StaticResource UserButtonStyle}" />
+                <Button
+                    Command="{Binding AddCategory}"
+                    Content="Добавиь категорию"
+                    Style="{StaticResource UserButtonStyle}" />
+                <Button
+                    Command="{Binding UpdateCategory}"
+                    Content="Обновить категорию"
+                    Style="{StaticResource UserButtonStyle}" />
+                <Button
+                    Command="{Binding DeleteCategory}"
+                    Content="Удалить категорию"
+                    Style="{StaticResource UserButtonStyle}" />
+                <Button
+                    Command="{Binding AddQuantityProduct}"
+                    Content="Добавить на склад"
+                    Style="{StaticResource UserButtonStyle}" />
+            </StackPanel>
+
+            <StackPanel Margin="10,30" VerticalAlignment="Bottom">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Style="{StaticResource UserTextBlockStyle}" Text="Login: " />
+                    <TextBlock Style="{StaticResource UserTextBlockStyle}" Text="{Binding LoginAdmin}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Style="{StaticResource UserTextBlockStyle}" Text="Name: " />
+                    <TextBlock Style="{StaticResource UserTextBlockStyle}" Text="{Binding NameAdmin}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Style="{StaticResource UserTextBlockStyle}" Text="Surname: " />
+                    <TextBlock Style="{StaticResource UserTextBlockStyle}" Text="{Binding SurnameAdmin}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Style="{StaticResource UserTextBlockStyle}" Text="Email: " />
+                    <TextBlock Style="{StaticResource UserTextBlockStyle}" Text="{Binding EmailAdmin}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Style="{StaticResource UserTextBlockStyle}" Text="Phone: " />
+                    <TextBlock Style="{StaticResource UserTextBlockStyle}" Text="{Binding PhoneAdmin}" />
+                </StackPanel>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Page>

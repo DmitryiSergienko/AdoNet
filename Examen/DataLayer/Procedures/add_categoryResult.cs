@@ -9,9 +9,9 @@ namespace DataLayer.Procedures
     public partial class add_categoryResult
     {
         public int id { get; set; }
-        [StringLength(200)]
+        [StringLength(2147483647)]
         public string name { get; set; }
-        [StringLength(1000)]
+        [StringLength(2147483647)]
         public string description { get; set; }
     }
 }

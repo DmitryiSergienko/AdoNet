@@ -8,9 +8,9 @@ namespace DataLayer.Procedures
 {
     public partial class stp_search_user_for_authResult
     {
-        [StringLength(50)]
+        [StringLength(2147483647)]
         public string login { get; set; }
-        [StringLength(100)]
+        [StringLength(2147483647)]
         public string password { get; set; }
     }
 }

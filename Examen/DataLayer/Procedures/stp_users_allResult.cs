@@ -9,19 +9,19 @@ namespace DataLayer.Procedures
     public partial class stp_users_allResult
     {
         public int id { get; set; }
-        [StringLength(50)]
+        [StringLength(2147483647)]
         public string login { get; set; }
-        [StringLength(100)]
+        [StringLength(2147483647)]
         public string password { get; set; }
-        [StringLength(100)]
+        [StringLength(2147483647)]
         public string name { get; set; }
-        [StringLength(100)]
+        [StringLength(2147483647)]
         public string surname { get; set; }
-        [StringLength(100)]
+        [StringLength(2147483647)]
         public string patronymic { get; set; }
-        [StringLength(255)]
+        [StringLength(2147483647)]
         public string mail { get; set; }
-        [StringLength(20)]
+        [StringLength(2147483647)]
         public string phone_number { get; set; }
         public DateTime? registration_date { get; set; }
     }

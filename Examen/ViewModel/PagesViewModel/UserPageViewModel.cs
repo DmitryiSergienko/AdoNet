@@ -1,8 +1,10 @@
 ﻿using DataLayer.Procedures;
 using DataLayer.Services;
 using System.Data;
+using System.IO;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media.Imaging;
 using ViewModel.Core;
 using ViewModel.Services.Interfaces;
 
@@ -11,12 +13,13 @@ public class UserPageViewModel : BasePageViewModel
 {
     public UserPageViewModel() { } // Нужен для дизайнера
     private readonly INavigateService _navigateService;
-    private readonly UserService _userService;
-    public string? LoginUser => _userService.CurrentUser?.Login;
-    public string? NameUser => _userService.CurrentUser?.Name;
-    public string? SurnameUser => _userService.CurrentUser?.Surname;
-    public string? EmailUser => _userService.CurrentUser?.Mail;
-    public string? PhoneUser => _userService.CurrentUser?.PhoneNumber;
+    private readonly Service _service;
+    private readonly DataLayer.Models.DataBaseContext _dbContext;
+    public string? LoginUser => _service.CurrentHuman?.Login;
+    public string? NameUser => _service.CurrentHuman?.Name;
+    public string? SurnameUser => _service.CurrentHuman?.Surname;
+    public string? EmailUser => _service.CurrentHuman?.Mail;
+    public string? PhoneUser => _service.CurrentHuman?.PhoneNumber;
     public ICommand LogOut { get; }
     public ICommand ShowTop3Products { get; }
     public ICommand SearchProductByName { get; }
@@ -53,24 +56,25 @@ public class UserPageViewModel : BasePageViewModel
             OnPropertyChanged();
         }
     }
-    public UserPageViewModel(INavigateService navigateService, UserService userService) 
+    public UserPageViewModel(INavigateService navigateService, Service service, DataLayer.Models.DataBaseContext dbContext)
     {
         _navigateService = navigateService;
-        _userService = userService;
+        _service = service;
+        _dbContext = dbContext;
 
         LogOut = new RelayCommand(obj =>
         {
             IsPortionsFormVisible = Visibility.Collapsed;
-            userService.LogOut();
+            service.LogOut();
             navigateService.NavigateTo<LoginPageViewModel>();
         });
-        ShowTop3Products = new RelayCommand(async obj => 
+        ShowTop3Products = new AsyncRelayCommand(async () =>
         {
             try
             {
                 IsPortionsFormVisible = Visibility.Collapsed;
-                var result = await _userService.GetTop3ProductsAsync();
-                Data = result;
+                var result = await _service.GetTop3ProductsAsync();
+                Data = await AddImageColumnAsync(result);
             }
             catch (Exception ex)
             {
@@ -100,19 +104,19 @@ public class UserPageViewModel : BasePageViewModel
                 MessageBox.Show("Ошибка: " + ex.Message);
             }
         });
-        EnterCountPortions = new RelayCommand(async obj =>
+        EnterCountPortions = new AsyncRelayCommand(async () =>
         {
             try
             {
-                var result = await _userService.GetShowProductsInPortionsAsync(_skipRows, CountPortions);
-                Data = result;
+                var result = await _service.GetShowProductsInPortionsAsync(_skipRows, CountPortions);
+                Data = await AddImageColumnAsync(result);
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Ошибка: " + ex.Message);
             }
         });
-        LeftArrowCountPortions = new RelayCommand(async obj =>
+        LeftArrowCountPortions = new AsyncRelayCommand(async () =>
         {
             try
             {
@@ -121,27 +125,26 @@ public class UserPageViewModel : BasePageViewModel
                     _skipRows -= CountPortions;
                     if (_skipRows < 0) _skipRows = 0;
                 }
-                var result = await _userService.GetShowProductsInPortionsAsync(_skipRows, CountPortions);
-                Data = result;
+                var result = await _service.GetShowProductsInPortionsAsync(_skipRows, CountPortions);
+                Data = await AddImageColumnAsync(result);
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Ошибка: " + ex.Message);
             }
         });
-        RightArrowCountPortions = new RelayCommand(async obj =>
+        RightArrowCountPortions = new AsyncRelayCommand(async () =>
         {
             try
             {
-                var products = await _userService.GetListAllProductsAsync();
+                var products = await _service.GetListAllProductsAsync();
                 var totalCount = products.Count;
                 var maxSkipRows = (totalCount / CountPortions) * CountPortions;
                 if (_skipRows + CountPortions < totalCount)
                 {
                     _skipRows += CountPortions;
-
-                    var result = await _userService.GetShowProductsInPortionsAsync(_skipRows, CountPortions);
-                    Data = result;
+                    var result = await _service.GetShowProductsInPortionsAsync(_skipRows, CountPortions);
+                    Data = await AddImageColumnAsync(result);
                 }
             }
             catch (Exception ex)
@@ -153,13 +156,13 @@ public class UserPageViewModel : BasePageViewModel
         {
             IsPortionsFormVisible = Visibility.Collapsed;
         });
-        ShowUserOrderHistory = new RelayCommand(async obj => 
+        ShowUserOrderHistory = new AsyncRelayCommand(async () =>
         {
             try
             {
                 IsPortionsFormVisible = Visibility.Collapsed;
-                var result = await _userService.GetUserOrderHistoryAsync();
-                Data = result;
+                var result = await _service.GetUserOrderHistoryAsync();
+                Data = await AddImageColumnAsync(result);
             }
             catch (Exception ex)
             {
@@ -200,5 +203,86 @@ public class UserPageViewModel : BasePageViewModel
     private void UpdateCountPortionsButtonState()
     {
         EnterCountPortionsIsEnabled = CountPortions > 0;
+    }
+
+    private byte[] _imageData;
+    public byte[] ImageData
+    {
+        get => _imageData;
+        set
+        {
+            if (Set(ref _imageData, value))
+            {
+                OnPropertyChanged(nameof(Image));
+            }
+        }
+    }
+    public BitmapImage Image
+    {
+        get
+        {
+            if (_imageData == null || _imageData.Length == 0)
+                return null;
+
+            try
+            {
+                var image = new BitmapImage();
+                using (var stream = new MemoryStream(_imageData))
+                {
+                    image.BeginInit();
+                    image.StreamSource = stream;
+                    image.CacheOption = BitmapCacheOption.OnLoad;
+                    image.EndInit();
+                    image.Freeze();
+                }
+                return image;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+    }
+    private async Task<DataTable> AddImageColumnAsync(DataTable table)
+    {
+        // Проверяем, есть ли в таблице столбец "images_id"
+        if (!table.Columns.Contains("images_id"))
+        {
+            // Если столбца нет — просто возвращаем исходную таблицу. НИЧЕГО НЕ ЛОМАЕМ.
+            return table;
+        }
+
+        try
+        {
+            // Добавляем новый столбец для хранения данных изображения
+            table.Columns.Add("Image", typeof(byte[]));
+
+            // Проходим по каждой строке и заполняем столбец "Image"
+            foreach (DataRow row in table.Rows)
+            {
+                if (row["images_id"] != DBNull.Value && int.TryParse(row["images_id"].ToString(), out int imageId))
+                {
+                    var imageEntity = await _dbContext.imagesSets.FindAsync(imageId);
+                    row["Image"] = imageEntity?.image; // Присваиваем массив байт или null
+                }
+                else
+                {
+                    // Если images_id null или не число — оставляем Image как null
+                    row["Image"] = DBNull.Value;
+                }
+            }
+
+            // Удаляем старый столбец "images_id", чтобы он не отображался
+            table.Columns.Remove("images_id");
+        }
+        catch (Exception ex)
+        {
+            // Логируем ошибку, но НЕ ПРОПУСКАЕМ исключение!
+            Console.WriteLine($"⚠️ Ошибка при добавлении столбца Image: {ex.Message}");
+            // Если что-то пошло не так, возвращаем исходную таблицу без изменений
+            return table;
+        }
+
+        return table;
     }
 }

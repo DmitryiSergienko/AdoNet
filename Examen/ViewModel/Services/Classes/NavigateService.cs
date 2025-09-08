@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System.Windows.Controls;
 using ViewModel.Core;
+using ViewModel.ModalWindowsViewModel;
 using ViewModel.PagesViewModel;
 using ViewModel.Services.Interfaces;
 
@@ -33,6 +34,7 @@ public class NavigateService : INavigateService
             RegistrationPageViewModel => "RegistrationPageView",
             AdminPageViewModel => "AdminPageView",
             UserPageViewModel => "UserPageView",
+            RegistrationWindowViewModel => "RegistrationWindowViewModel",
             _ => throw new ArgumentException($"Неизвестная ViewModel: {typeof(T).Name}")
         };
 
